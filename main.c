@@ -12,7 +12,7 @@ A shell life cycle :	1) Initialize: reads and executes its config file
 //the shell loop function ----------------
 void lash_loop(void){
 char *line;
-chat **args;
+char **args;
 int status;
 
 do{
@@ -75,7 +75,7 @@ tokens[position]=token;
 position++;
 if(position>= buffersize){
 buffersize += LSH_TOK_BUFSIZE;
-tokens= realloc(tokens,bufsize*sizeof(char*));
+tokens= realloc(tokens,buffersize*sizeof(char*));
 if(!tokens){
 fprintf(stderr, "lsh: allocation error\n");
 exit(EXIT_FAILURE);
