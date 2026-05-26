@@ -34,6 +34,10 @@ free(args);
 }while(status);
 
 }
+
+char *string_parser(char *args){
+//placeholder to deal with the string inside toke case 
+}
 //Read line function - could have used getline but manuel way is  good for learning -------------
 char *lsh_read_line(void)
 {
