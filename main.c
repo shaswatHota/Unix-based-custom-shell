@@ -18,6 +18,7 @@ A shell life cycle :	1) Initialize: reads and executes its config file
 char *lsh_read_line(void);
 char **lsh_split_line(char *line);
 int lsh_execute(char **args);
+void string_parser(char **tokens);
 void lsh_loop(void){
 char *line;
 char **args;
@@ -35,10 +36,7 @@ free(args);
 
 }
 
-char *string_parser(char *args){
-//placeholder to deal with the string inside toke case 
-}
-//Read line function 
+//Read line function
 char *lsh_read_line(void)
 {
   char *line = NULL;
@@ -55,6 +53,7 @@ char *lsh_read_line(void)
 
   return line;
 }
+
 //split function-------------------------
 char **lsh_split_line(char *line){
 int buffersize = LSH_TOK_BUFSIZE,position=0;
@@ -77,12 +76,26 @@ fprintf(stderr, "lsh: allocation error\n");
 exit(EXIT_FAILURE);
 }
 }
+printf("tokens type: %s",token);
 token=strtok(NULL,LSH_TOK_DELIM);
+
 }
+//string_parser(tokens);
 tokens[position]=NULL;
+
 return tokens;
 }
 
+/*
+void string_parser(char **tokens){
+int length= sizeof(tokens)/sizeof(tokens[0]);
+for(int i =0;i<length; i++){
+if(tokens[i][0]=="\"" && tokens[i][strlen(tokens[i])-1]== "\""){
+printf("Ya it is present at %d",i);
+}
+}
+}
+*/
 int lsh_launch(char **args)
 {
   pid_t pid, wpid;
